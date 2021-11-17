@@ -23,7 +23,7 @@ import "./IUniswapV2Factory.sol";
 import "./IUniswapV2Router.sol";
 
 
-contract SquidGameToken is ERC20, Ownable {
+contract ArmyOfThievesNFT is ERC20, Ownable {
     using SafeMath for uint256;
 
     IUniswapV2Router02 public uniswapV2Router;
@@ -31,7 +31,7 @@ contract SquidGameToken is ERC20, Ownable {
 
     bool private swapping;
 
-    SquidGameTokenDividendTracker public dividendTracker;
+    ArmyOfThievesNFTDividendTracker public dividendTracker;
 
     address public deadWallet = 0x000000000000000000000000000000000000dEaD;
 
