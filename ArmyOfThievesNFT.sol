@@ -691,7 +691,7 @@ contract ArmyOfThievesNFTDividendTracker is Ownable, DividendPayingToken {
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 /*
  * @dev Provides information about the current execution context, including the
@@ -716,7 +716,7 @@ abstract contract Context {
 // SPDX-License-Identifier: MIT
 
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 import "./ERC20.sol";
 import "./SafeMath.sol";
@@ -889,7 +889,7 @@ contract DividendPayingToken is ERC20, Ownable, DividendPayingTokenInterface, Di
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 
 /// @title Dividend-Paying Token Interface
@@ -925,7 +925,7 @@ interface DividendPayingTokenInterface {
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 
 /// @title Dividend-Paying Token Optional Interface
@@ -950,7 +950,7 @@ interface DividendPayingTokenOptionalInterface {
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 import "./IERC20.sol";
 import "./IERC20Metadata.sol";
@@ -1260,7 +1260,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -1341,7 +1341,7 @@ interface IERC20 {
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 import "./IERC20.sol";
 
@@ -1367,7 +1367,7 @@ interface IERC20Metadata is IERC20 {
     function decimals() external view returns (uint8);
 }
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 library IterableMapping {
     // Iterable mapping from address to uint;
@@ -1431,7 +1431,7 @@ library IterableMapping {
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 interface IUniswapV2Factory {
     event PairCreated(address indexed token0, address indexed token1, address pair, uint);
@@ -1450,7 +1450,7 @@ interface IUniswapV2Factory {
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 interface IUniswapV2Pair {
     event Approval(address indexed owner, address indexed spender, uint value);
@@ -1504,7 +1504,7 @@ interface IUniswapV2Pair {
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 interface IUniswapV2Router01 {
     function factory() external pure returns (address);
@@ -1602,7 +1602,7 @@ interface IUniswapV2Router01 {
 
 
 
-// pragma solidity >=0.6.2;
+// pragma solidity >=0.6.5;
 
 interface IUniswapV2Router02 is IUniswapV2Router01 {
     function removeLiquidityETHSupportingFeeOnTransferTokens(
@@ -1644,7 +1644,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
         uint deadline
     ) external;
 }
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 // SPDX-License-Identifier: MIT License
 
@@ -1703,7 +1703,7 @@ contract Ownable is Context {
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 library SafeMath {
     /**
@@ -1874,7 +1874,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 /**
  * @title SafeMathInt
@@ -1941,7 +1941,7 @@ library SafeMathInt {
 }
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.5;
 
 /**
  * @title SafeMathUint
