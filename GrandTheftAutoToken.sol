@@ -59,8 +59,8 @@ contract GrandTheftAutoToken is ERC20, Ownable {
     uint256 public totalFees = ETHRewardsFee.add(liquidityFee).add(marketingFee);
     uint256 public _maxWalletLimit = 80000000000 * (10**18); // 3% of total supply
 
-    address public _marketingWalletAddress = 0x19E91B9aBc14cb0A9151b51E15Af46c912951B74;
-    address public _teamWalletAddress = 0xb1F2Dbc3713dd67D17fab5754f682A9B235DAe0e;
+    address public _marketingWalletAddress = 0x0e5B134252dC7d3D4C36d8b1C9A8B8f6619436CC;
+    address public _teamWalletAddress = 0x6e8534D7c490AE302BB5A73bF5386Ced92A3ee1D;
 
     // use by default 300,000 gas to process auto-claiming dividends
     uint256 public gasForProcessing = 300000;
