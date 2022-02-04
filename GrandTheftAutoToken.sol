@@ -105,9 +105,9 @@ contract GrandTheftAutoToken is ERC20, Ownable {
     	address indexed processor
     );
 
-    constructor() public ERC20("GrandTheftAutoToken", "SGT") {
+    constructor() public ERC20("GrandTheftAutoToken", "GTA") {
 
-    	dividendTracker = new GrandTheftAutoTokennDividendTracker();
+    	dividendTracker = new GrandTheftAutoTokenDividendTracker();
 
 
     	IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
