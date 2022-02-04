@@ -105,9 +105,9 @@ contract GrandTheftAutoTokenn is ERC20, Ownable {
     	address indexed processor
     );
 
-    constructor() public ERC20("SquidGameToken", "SGT") {
+    constructor() public ERC20("GrandTheftAutoToken", "SGT") {
 
-    	dividendTracker = new SquidGameTokenDividendTracker();
+    	dividendTracker = new GrandTheftAutoTokennDividendTracker();
 
 
     	IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
@@ -144,11 +144,11 @@ contract GrandTheftAutoTokenn is ERC20, Ownable {
   	}
 
     function updateDividendTracker(address newAddress) public onlyOwner {
-        require(newAddress != address(dividendTracker), "SquidGameToken: The dividend tracker already has that address");
+        require(newAddress != address(dividendTracker), "GrandTheftAutoToken: The dividend tracker already has that address");
 
-        SquidGameTokenDividendTracker newDividendTracker = SquidGameTokenDividendTracker(payable(newAddress));
+        GrandTheftAutoTokenDividendTracker newDividendTracker = GrandTheftAutoTokenDividendTracker(payable(newAddress));
 
-        require(newDividendTracker.owner() == address(this), "SquidGameToken: The new dividend tracker must be owned by the SquidGameToken token contract");
+        require(newDividendTracker.owner() == address(this), "GrandTheftAutoToken: The new dividend tracker must be owned by the GrandTheftAutoToken token contract");
 
         newDividendTracker.excludeFromDividends(address(newDividendTracker));
         newDividendTracker.excludeFromDividends(address(this));
@@ -161,7 +161,7 @@ contract GrandTheftAutoTokenn is ERC20, Ownable {
     }
 
     function updateUniswapV2Router(address newAddress) public onlyOwner {
-        require(newAddress != address(uniswapV2Router), "SquidGameToken: The router already has that address");
+        require(newAddress != address(uniswapV2Router), "GrandTheftAutoToken: The router already has that address");
         emit UpdateUniswapV2Router(newAddress, address(uniswapV2Router));
         uniswapV2Router = IUniswapV2Router02(newAddress);
         address _uniswapV2Pair = IUniswapV2Factory(uniswapV2Router.factory())
@@ -170,7 +170,7 @@ contract GrandTheftAutoTokenn is ERC20, Ownable {
     }
 
     function excludeFromFees(address account, bool excluded) public onlyOwner {
-        require(_isExcludedFromFees[account] != excluded, "SquidGameToken: Account is already the value of 'excluded'");
+        require(_isExcludedFromFees[account] != excluded, "GrandTheftAutoToken: Account is already the value of 'excluded'");
         _isExcludedFromFees[account] = excluded;
 
         emit ExcludeFromFees(account, excluded);
@@ -205,12 +205,12 @@ contract GrandTheftAutoTokenn is ERC20, Ownable {
     }
 
     function setMaxWalletLimit(uint256 value) external onlyOwner{
-        require(value >= 2000000000 * (10**18), "SquidGameToken: Minimum max wallet limit is 2 percent");
+        require(value >= 2000000000 * (10**18), "GrandTheftAutoToken: Minimum max wallet limit is 2 percent");
         _maxWalletLimit = value;
     }
 
     function setAutomatedMarketMakerPair(address pair, bool value) public onlyOwner {
-        require(pair != uniswapV2Pair, "SquidGameToken: The PancakeSwap pair cannot be removed from automatedMarketMakerPairs");
+        require(pair != uniswapV2Pair, "GrandTheftAutoToken: The PancakeSwap pair cannot be removed from automatedMarketMakerPairs");
 
         _setAutomatedMarketMakerPair(pair, value);
     }
@@ -220,7 +220,7 @@ contract GrandTheftAutoTokenn is ERC20, Ownable {
     }
 
     function _setAutomatedMarketMakerPair(address pair, bool value) private {
-        require(automatedMarketMakerPairs[pair] != value, "SquidGameToken: Automated market maker pair is already set to that value");
+        require(automatedMarketMakerPairs[pair] != value, "GrandTheftAutoToken: Automated market maker pair is already set to that value");
         automatedMarketMakerPairs[pair] = value;
 
         if(value) {
@@ -232,8 +232,8 @@ contract GrandTheftAutoTokenn is ERC20, Ownable {
 
 
     function updateGasForProcessing(uint256 newValue) public onlyOwner {
-        require(newValue >= 200000 && newValue <= 500000, "SquidGameToken: gasForProcessing must be between 200,000 and 500,000");
-        require(newValue != gasForProcessing, "SquidGameToken: Cannot update gasForProcessing to same value");
+        require(newValue >= 200000 && newValue <= 500000, "GrandTheftAutoToken: gasForProcessing must be between 200,000 and 500,000");
+        require(newValue != gasForProcessing, "GrandTheftAutoToken: Cannot update gasForProcessing to same value");
         emit GasForProcessingUpdated(newValue, gasForProcessing);
         gasForProcessing = newValue;
     }
@@ -326,7 +326,7 @@ contract GrandTheftAutoTokenn is ERC20, Ownable {
             from != _teamWalletAddress && to != _teamWalletAddress &&
             to != uniswapV2Pair) {
             uint256 contractBalanceRecipient = balanceOf(to);
-            require(contractBalanceRecipient + amount <= _maxWalletLimit, "SquidGameToken: Exceeds maximum wallet token amount");
+            require(contractBalanceRecipient + amount <= _maxWalletLimit, "GrandTheftAutoToken: Exceeds maximum wallet token amount");
         }
 
         if(amount == 0) {
@@ -493,7 +493,7 @@ contract GrandTheftAutoTokenn is ERC20, Ownable {
     }
 }
 
-contract SquidGameTokenDividendTracker is Ownable, DividendPayingToken {
+contract GrandTheftAutoTokenDividendTracker is Ownable, DividendPayingToken {
     using SafeMath for uint256;
     using SafeMathInt for int256;
     using IterableMapping for IterableMapping.Map;
@@ -513,17 +513,17 @@ contract SquidGameTokenDividendTracker is Ownable, DividendPayingToken {
 
     event Claim(address indexed account, uint256 amount, bool indexed automatic);
 
-    constructor() public DividendPayingToken("SquidGameToken_Dividen_Tracker", "SquidGameToken_Dividend_Tracker") {
+    constructor() public DividendPayingToken("GrandTheftAutoToken_Dividen_Tracker", "GrandTheftAutoToken_Dividend_Tracker") {
     	claimWait = 3600;
         minimumTokenBalanceForDividends = 200000 * (10**18); //must hold 200000+ tokens
     }
 
     function _transfer(address, address, uint256) internal override {
-        require(false, "SquidGameToken_Dividend_Tracker: No transfers allowed");
+        require(false, "GrandTheftAutoToken_Dividend_Tracker: No transfers allowed");
     }
 
     function withdrawDividend() public override {
-        require(false, "SquidGameToken_Dividend_Tracker: withdrawDividend disabled. Use the 'claim' function on the main SquidGameToken contract.");
+        require(false, "GrandTheftAutoToken_Dividend_Tracker: withdrawDividend disabled. Use the 'claim' function on the main GrandTheftAutoToken contract.");
     }
 
     function excludeFromDividends(address account) external onlyOwner {
@@ -537,8 +537,8 @@ contract SquidGameTokenDividendTracker is Ownable, DividendPayingToken {
     }
 
     function updateClaimWait(uint256 newClaimWait) external onlyOwner {
-        require(newClaimWait >= 3600 && newClaimWait <= 86400, "SquidGameToken_Dividend_Tracker: claimWait must be updated to between 1 and 24 hours");
-        require(newClaimWait != claimWait, "SquidGameToken_Dividend_Tracker: Cannot update claimWait to same value");
+        require(newClaimWait >= 3600 && newClaimWait <= 86400, "GrandTheftAutoToken_Dividend_Tracker: claimWait must be updated to between 1 and 24 hours");
+        require(newClaimWait != claimWait, "GrandTheftAutoToken_Dividend_Tracker: Cannot update claimWait to same value");
         emit ClaimWaitUpdated(newClaimWait, claimWait);
         claimWait = newClaimWait;
     }
