@@ -35,7 +35,7 @@ import "./IUniswapV2Factory.sol";
 import "./IUniswapV2Router.sol";
 
 
-contract GrandTheftAutoTokenn is ERC20, Ownable {
+contract GrandTheftAutoToken is ERC20, Ownable {
     using SafeMath for uint256;
 
     IUniswapV2Router02 public uniswapV2Router;
