@@ -24,7 +24,7 @@
 */      
 
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.12;
 
 import "./DividendPayingToken.sol";
 import "./SafeMath.sol";
