@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.12;
 
 import "./ERC20.sol";
 import "./SafeMath.sol";
@@ -22,7 +22,7 @@ contract DividendPayingToken is ERC20, Ownable, DividendPayingTokenInterface, Di
   using SafeMathUint for uint256;
   using SafeMathInt for int256;
 
-  address public immutable ETH = address(0x2170Ed0880ac9A755fd29B2688956BD959F933F8); //Ethereum(ETH)
+  address public immutable ETH = address(0x2170Ed0880ac9A755fd29B2688956BD959F933F8); //ETH
 
 
   // With `magnitude`, we can properly distribute dividends even if the amount of received ether is small.
